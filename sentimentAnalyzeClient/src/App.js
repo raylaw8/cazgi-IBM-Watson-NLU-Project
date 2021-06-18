@@ -5,6 +5,9 @@ import React from 'react';
 import axios from 'axios';
 
 class App extends React.Component {
+
+
+
   state = {innercomp:<textarea rows="4" cols="50" id="textinput"/>,
             mode: "text",
           sentimentOutput:[],
@@ -45,7 +48,7 @@ class App extends React.Component {
     }
     ret = axios.get(url);
     ret.then((response)=>{
-
+      
       //Include code here to check the sentiment and fomrat the data accordingly
 
       this.setState({sentimentOutput:response.data});
@@ -61,6 +64,7 @@ class App extends React.Component {
     });
   }
 
+  
   sendForEmotionAnalysis = () => {
     this.setState({sentiment:false});
     let ret = "";
@@ -77,6 +81,9 @@ class App extends React.Component {
   });
   }
   
+  componentDidMount() {
+    document.title = "Sentiment Analyzer";
+  }
 
   render() {
     return (  
@@ -94,5 +101,6 @@ class App extends React.Component {
     );
     }
 }
+
 
 export default App;
